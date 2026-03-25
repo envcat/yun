@@ -37,7 +37,7 @@ class PrettyPrinter:
 
     def print(self, type: MessageType, message: str, details: str | list[str] | None = None):
         style = self.themes.get(type, MessageStyle("?", "white"))
-        title = Text.assemble((style.icon, f"bold {style.color}"), (str(message), "bold white"))
+        title = Text.assemble((style.icon, f"bold {style.color}"), " ", (str(message), "bold white"))
 
         self.console.print(title)
 
