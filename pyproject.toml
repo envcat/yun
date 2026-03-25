@@ -1,17 +1,56 @@
+[build-system]
+build-backend = "uv_build"
+requires = [ "uv-build>=0.9.22,<0.10" ]
+
 [project]
 name = "yun"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-authors = [
-    { name = "envcat", email = "266045439+envcat@users.noreply.github.com" }
-]
+authors = [ { name = "envcat", email = "266045439+envcat@users.noreply.github.com" } ]
 requires-python = ">=3.13"
+classifiers = [
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+]
 dependencies = [
-    "chainlit>=2.10.0",
-    "langchain>=1.2.13",
+  "chainlit>=2.10",
+  "langchain>=1.2.13",
 ]
 
-[build-system]
-requires = ["uv_build>=0.9.22,<0.10.0"]
-build-backend = "uv_build"
+[tool.ruff]
+line-length = 120
+lint.select = [
+  "B",  # flake8-bugbear
+  "C4", # flake8-comprehensions
+  "D",  # pydocstyle
+  "E",  # pycodestyle errors
+  "F",  # pyflakes
+  "I",  # isort
+  "UP", # pyupgrade
+  "W",  # pycodestyle warnings
+]
+ignore = [
+  "D100", # Missing docstring in public module
+  "D101", # Missing docstring in public class
+  "D102", # Missing docstring in public method
+  "D103", # Missing docstring in public function
+  "D104", # Missing docstring in public package
+  "D105", # Missing docstring in magic method
+  "D106", # Missing docstring in public nested class
+  "D107", # Missing docstring in __init__
+]
+
+[tool.pyright]
+typeCheckingMode = "standard"
+include = [ "src/*" ]
+venvPath = "."
+venv = ".venv"
+
+[tool.rumdl]
+disable = [ "MD013" ]
+include = [ "docs/*.md", "README.md" ]
+exclude = [ ".git", "node_modules", "LICENSE" ]
+respect-gitignore = true
+MD044.names = [ "rumdl", "Markdown", "GitHub", "JavaScript", "Node.js", "TypeScript" ]
